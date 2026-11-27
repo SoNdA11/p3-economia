@@ -1,0 +1,725 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>P3 Economia · Crescimento Econômico (Cap. 8 e 9)</title>
+  <meta name="description" content="Revisão interativa dos capítulos 8 e 9 do Macroeconomia de Mankiw: modelo de Solow, Regra de Ouro, progresso tecnológico, políticas e crescimento endógeno.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23111'/%3E%3Cpath d='M7 23 C 12 12, 18 10, 25 8' stroke='%23fff' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+  <script>
+    (function () {
+      var t = localStorage.getItem("p3-theme");
+      if (!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      document.documentElement.dataset.theme = t;
+    })();
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="#inicio" class="brand"><span class="brand-mark"></span><span class="brand-text">P3 · Crescimento</span></a>
+      <nav class="tabs" aria-label="Seções">
+        <a href="#inicio" data-tab="inicio">Início</a>
+        <a href="#revisao" data-tab="revisao">Revisão</a>
+        <a href="#video" data-tab="video">Vídeo</a>
+        <a href="#diagramas" data-tab="diagramas">Diagramas</a>
+        <a href="#quiz" data-tab="quiz">Quiz</a>
+        <a href="#flashcards" data-tab="flashcards">Flashcards</a>
+        <a href="#jogos" data-tab="jogos">Jogos</a>
+        <a href="#atividade" data-tab="atividade">Atividade</a>
+        <a href="#cola" data-tab="cola">Cola</a>
+      </nav>
+      <button class="icon-btn" id="searchBtn" aria-label="Buscar (atalho: /)" title="Buscar (/)">
+        <svg viewBox="0 0 24 24" width="18" height="18"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M16 16l4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <button class="icon-btn theme-toggle" id="themeToggle" aria-label="Alternar tema claro/escuro" title="Alternar tema">
+        <svg class="i-sun" viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="1.8"/><g stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></g></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" width="18" height="18"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+    <div class="readbar" id="readbar" hidden><div class="readbar-fill" id="readbarFill"></div></div>
+  </header>
+
+  <main>
+    <!-- ============================== INÍCIO ============================== -->
+    <section id="inicio" data-sec="inicio" class="page">
+      <div class="hero">
+        <p class="eyebrow">Mankiw · Macroeconomia, 8ª ed. · Capítulos 8 e 9</p>
+        <h1>Crescimento econômico,<br>do modelo de Solow ao crescimento endógeno.</h1>
+        <p class="lead">Revisão para a P3 (prova de múltipla escolha, sem cálculos). Leia o resumo, mexa nos diagramas, depois treine com o quiz e os flashcards. Seu progresso fica salvo neste navegador.</p>
+      </div>
+
+      <div id="homeNext" class="next-block"></div>
+
+      <div class="grid cards">
+        <a class="card link-card" data-sec="revisao" href="#revisao">
+          <span class="card-k">01</span><h3>Revisão</h3>
+          <p>Resumo de cada seção, figuras-chave, estudos de caso e pegadinhas.</p>
+        </a>
+        <a class="card link-card" data-sec="video" href="#video">
+          <span class="card-k">▶</span><h3>Vídeo de revisão</h3>
+          <p>Paulo, Larissa e Marcos explicam os Caps. 8 e 9 passando por 12 lugares diferentes. Animado, narrado e legendado.</p>
+        </a>
+        <a class="card link-card" data-sec="diagramas" href="#diagramas">
+          <span class="card-k">02</span><h3>Diagramas interativos</h3>
+          <p>Mexa em s, n, δ e g e veja o estado estacionário, a Regra de Ouro, a transição e a convergência.</p>
+        </a>
+        <a class="card link-card" data-sec="quiz" href="#quiz">
+          <span class="card-k">03</span><h3>Quiz</h3>
+          <p><span data-count="questions"></span> questões de múltipla escolha com explicação. Modo treino ou simulado.</p>
+        </a>
+        <a class="card link-card" data-sec="flashcards" href="#flashcards">
+          <span class="card-k">04</span><h3>Flashcards</h3>
+          <p><span data-count="flashcards"></span> cartões de conceitos. Marque o que já sabe e revise o resto.</p>
+        </a>
+        <a class="card link-card" data-sec="jogos" href="#jogos">
+          <span class="card-k">05</span><h3>Jogos</h3>
+          <p>Verdadeiro ou falso, efeitos de choques (nível × crescimento) e associação autor ↔ ideia.</p>
+        </a>
+        <a class="card link-card" data-sec="atividade" href="#atividade">
+          <span class="card-k">06</span><h3>Atividade do professor</h3>
+          <p>As 5 questões discursivas da atividade sobre Solow, com respostas-modelo e quiz dos temas.</p>
+        </a>
+        <a class="card link-card" data-sec="cola" href="#cola">
+          <span class="card-k">07</span><h3>Cola para imprimir</h3>
+          <p>Tudo o que mais cai em uma página: pegadinhas, tabelas, choques e autores.</p>
+        </a>
+        <div class="card progress-card" id="homeProgress"></div>
+      </div>
+
+      <div class="block">
+        <h2>As pegadinhas mais prováveis</h2>
+        <ol class="traps">
+          <li><b>Poupança tem efeito de nível, não de crescimento.</b> Mais poupança aumenta o capital e a renda por trabalhador, mas o crescimento só é maior durante a transição.</li>
+          <li><b>A Regra de Ouro maximiza o consumo</b>, não a produção nem o capital.</li>
+          <li><b>A economia não vai sozinha para a Regra de Ouro.</b> É preciso uma taxa de poupança específica.</li>
+          <li><b>Abaixo da Regra de Ouro</b>, aumentar s faz o consumo cair primeiro e subir depois. <b>Acima</b>, reduzir s eleva o consumo em todos os períodos.</li>
+          <li><b>Com crescimento populacional</b>, a renda por trabalhador fica constante e a renda total cresce no ritmo da população. Mais crescimento populacional reduz o capital e a renda por trabalhador (efeito de nível).</li>
+          <li><b>Com progresso tecnológico</b>, a renda por trabalhador cresce no ritmo da tecnologia, e a renda total no ritmo da população mais a tecnologia.</li>
+          <li><b>Em Solow, só a tecnologia explica crescimento sustentado.</b> No crescimento endógeno (capital sem retornos decrescentes), a poupança gera crescimento permanente.</li>
+          <li><b>A convergência é condicional:</b> cada país converge para o <i>seu próprio</i> estado estacionário (~2% a.a.).</li>
+          <li><b>Os EUA estão abaixo da Regra de Ouro</b>: o capital rende bem mais do que a economia cresce, então deveriam poupar mais.</li>
+          <li><b>Correlação ≠ causalidade</b>: investimento × renda, população × renda, comércio × crescimento.</li>
+          <li><b>No modelo de dois setores</b>, só a fração de pessoas em pesquisa afeta o crescimento; a poupança afeta só o nível.</li>
+          <li><b>Tigres Asiáticos:</b> crescimento explicado por <i>insumos</i>, não por PTF excepcional.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============================== REVISÃO ============================== -->
+    <section id="revisao" data-sec="revisao" class="page" hidden>
+      <div class="page-head">
+        <h1>Revisão</h1>
+        <p class="lead">Revisão conceitual dos Caps. 8 e 9: a intuição de cada tópico, exemplos e o que costuma cair. Sem fórmulas.</p>
+      </div>
+
+      <div class="review-layout">
+        <aside class="toc" id="toc">
+          <p class="toc-title">Capítulo 8</p>
+          <a href="#r-8-1">8-1 Acumulação de capital</a>
+          <a href="#r-8-2">8-2 Regra de Ouro</a>
+          <a href="#r-8-3">8-3 Crescimento populacional</a>
+          <a href="#r-8-4">Malthus e Kremer</a>
+          <a href="#r-8-res">Resumo do Cap. 8</a>
+          <p class="toc-title">Capítulo 9</p>
+          <a href="#r-9-1">9-1 Progresso tecnológico</a>
+          <a href="#r-9-2">9-2 Teoria × prática</a>
+          <a href="#r-9-3">9-3 Políticas de crescimento</a>
+          <a href="#r-9-4">9-4 Crescimento endógeno</a>
+          <a href="#r-9-ap">Apêndice: contabilidade</a>
+          <a href="#r-9-res">Resumo do Cap. 9</a>
+        </aside>
+
+        <article class="prose">
+          <div class="review-intro callout">
+            <p class="callout-t">Como usar esta revisão</p>
+            <p>A prova cobra <b>conceitos</b>, não contas. Por isso, aqui cada tópico vem explicado com a intuição, um exemplo do dia a dia e um quadro <b>“Como cai na prova”</b> com as confusões mais comuns. Os gráficos servem para <i>ver</i> a ideia: repare para onde as curvas se movem.</p>
+          </div>
+
+          <div class="chapter-label" data-cap="8">Capítulo 8</div>
+          <h2 class="chapter-title">Crescimento Econômico I: Acumulação de Capital e Crescimento Populacional</h2>
+          <p>Seus avós provavelmente viveram com muito menos conforto do que você: ao longo das décadas, a renda da maioria das famílias cresceu bastante. E, num mesmo ano, há países em que a renda média é mais de 50 vezes maior do que em outros. <b>De onde vêm essas diferenças, ao longo do tempo e entre países?</b></p>
+          <p>Para responder, o livro usa o <b>modelo de crescimento de Solow</b> (Robert Solow, Nobel de 1987). Ele mostra como três forças determinam o padrão de vida no longo prazo:</p>
+          <ul>
+            <li><b>Poupança</b>: quanto da renda a sociedade deixa de consumir para investir em máquinas, fábricas e equipamentos;</li>
+            <li><b>Crescimento populacional</b>: quantas pessoas novas entram na força de trabalho;</li>
+            <li><b>Progresso tecnológico</b>: quanto melhoram os métodos de produção (este fica para o Cap. 9).</li>
+          </ul>
+          <p>Diferente da análise estática do Cap. 3 (“uma fotografia”), o modelo de Solow é <b>dinâmico</b>: “um filme” que mostra a economia mudando ao longo do tempo.</p>
+
+          <h3 id="r-8-1">8-1 · A acumulação de capital</h3>
+          <div class="idea"><span>Em uma frase</span>A economia produz com capital e trabalho. Parte do que é produzido é poupada e vira capital novo, e é assim que o estoque de capital cresce ou encolhe.</div>
+
+          <h4>Olhar tudo “por trabalhador”</h4>
+          <p>O modelo supõe <b>retornos constantes de escala</b>: se dobrarmos o capital <i>e</i> os trabalhadores, a produção dobra. Por isso o tamanho do país não importa para o padrão de vida. O que importa é quanto <b>capital cada trabalhador tem</b> e quanto <b>cada trabalhador produz</b>. Daqui em diante, “capital” e “produção” querem dizer <b>por trabalhador</b>.</p>
+
+          <h4>Produto marginal decrescente: a ideia mais importante do capítulo</h4>
+          <p>Quanto mais capital um trabalhador tem, mais ele produz, mas <b>cada unidade extra de capital ajuda menos que a anterior</b>. Essa é a lei do <b>produto marginal do capital decrescente</b>.</p>
+          <div class="exemplo"><span>Exemplo</span>Um entregador sem bicicleta faz poucas entregas. Com a primeira bicicleta, o número de entregas dispara. Uma segunda bicicleta ajuda pouco (é uma reserva). A terceira praticamente não muda nada. Por isso a curva de produção vai ficando <b>cada vez mais “deitada”</b>.</div>
+          <p>Quase tudo o que o modelo prevê sai dessa ideia: por que a poupança não gera crescimento para sempre, por que países pobres podem crescer mais rápido e por que a economia chega a um ponto de equilíbrio.</p>
+
+          <h4>Para onde vai a produção: consumo e investimento</h4>
+          <p>O que é produzido tem dois destinos: <b>consumo</b> (usar agora) ou <b>investimento</b> (virar capital para produzir mais no futuro). A sociedade poupa uma fração fixa da renda, a <b>taxa de poupança</b>, e <b>tudo o que é poupado é investido</b>. Então a taxa de poupança é também a fração da produção que vira capital novo.</p>
+
+          <h4 id="r-8-ee">Estado estacionário: o equilíbrio de longo prazo</h4>
+          <p>Duas forças mexem no estoque de capital:</p>
+          <ul>
+            <li><b>Investimento</b>, que <b>aumenta</b> o capital (máquinas novas);</li>
+            <li><b>Depreciação</b>, que <b>diminui</b> o capital (máquinas que se desgastam). Uma fração fixa do capital se desgasta todo ano, então quanto mais capital existe, mais capital se perde.</li>
+          </ul>
+          <div class="exemplo"><span>Analogia do balde furado</span>Pense num balde com uma torneira aberta (o investimento) e um furo no fundo (a depreciação). Quanto mais água há no balde, mais forte ela vaza pelo furo. Em algum nível, <b>o que entra é igual ao que sai</b> e o nível para de mudar. Esse nível é o <b>estado estacionário</b>.</div>
+          <ul>
+            <li>Se a economia tem <b>menos capital</b> que o estado estacionário, investe mais do que perde com a depreciação, e o capital <b>cresce</b>.</li>
+            <li>Se tem <b>mais capital</b>, perde mais com a depreciação do que investe, e o capital <b>diminui</b>.</li>
+            <li>Por isso o estado estacionário é o <b>equilíbrio de longo prazo</b>: qualquer que seja o ponto de partida, a economia caminha até ele e, lá chegando, fica.</li>
+          </ul>
+          <figure class="fig" data-fig="steady"><figcaption>Onde a curva de investimento (azul) cruza a reta de depreciação (laranja) está o estado estacionário. À esquerda dele o capital cresce; à direita, diminui.</figcaption></figure>
+
+          <details class="case"><summary><span>Estudo de caso</span> O “milagre” do Japão e da Alemanha</summary>
+            <p>Em 1945, a guerra tinha destruído boa parte das fábricas e máquinas dos dois países. Nas décadas seguintes, eles cresceram muito mais rápido que os EUA. Para Solow, isso não é milagre: a guerra jogou a economia <b>abaixo</b> do seu estado estacionário. Como continuaram poupando, o investimento ficou muito acima da depreciação, e o capital (e a produção) cresceu depressa até voltar ao equilíbrio. Além disso, os dois países poupavam muito, o que significava um estado estacionário alto para onde voltar.</p>
+          </details>
+
+          <h4 id="r-8-poup">Como a poupança afeta o crescimento</h4>
+          <p>Se o país passa a poupar uma fração maior da renda, o investimento aumenta. No balde, é como <b>abrir mais a torneira</b>: o nível sobe até um <b>novo estado estacionário, mais alto</b>, e para de novo.</p>
+          <ul>
+            <li><b>No instante da mudança</b>, nada muda no capital e na produção, porque capital é um estoque e só cresce aos poucos. O que muda é a divisão da renda: <b>mais investimento, menos consumo</b>.</li>
+            <li><b>Durante a transição</b>, o capital e a produção crescem, mas cada vez mais devagar (produto marginal decrescente).</li>
+            <li><b>No fim</b>, o país tem mais capital e mais renda por trabalhador, mas <b>volta a crescer à mesma taxa de antes</b>.</li>
+          </ul>
+          <figure class="fig" data-fig="saving"><figcaption>Mais poupança empurra a curva de investimento para cima. O novo estado estacionário tem mais capital.</figcaption></figure>
+          <div class="prova"><span>Como cai na prova</span><b>Efeito de nível × efeito de crescimento.</b> A poupança tem <b>efeito de nível</b>: muda o <i>nível</i> da renda por trabalhador, não a <i>taxa de crescimento</i> de longo prazo. A afirmação “poupar mais faz o país crescer mais rápido para sempre” é <b>falsa</b> em Solow; o crescimento só é mais rápido durante a transição.</div>
+          <p>Uma consequência para a política econômica: <b>déficits do governo</b> reduzem a poupança nacional e, no longo prazo, levam a <b>menos capital e menos renda</b>. É por isso que os economistas criticam déficits persistentes.</p>
+
+          <details class="case"><summary><span>Estudo de caso</span> Poupança e investimento ao redor do mundo</summary>
+            <p>Em cerca de 100 países, quem investe uma fração maior da renda tende a ser mais rico (Coreia do Sul e Japão de um lado; Nigéria e Burundi do outro), como Solow prevê. Mas a relação está longe de ser perfeita, então outras coisas também importam. E <b>correlação não é causalidade</b>: talvez seja a renda alta que leve as pessoas a poupar mais (causalidade inversa). Estabilidade política, mercados financeiros, cultura e corrupção também ajudam a explicar por que alguns países poupam mais.</p>
+          </details>
+
+          <h3 id="r-8-2">8-2 · O nível de capital da Regra de Ouro</h3>
+          <div class="idea"><span>Em uma frase</span>Poupar mais nem sempre é melhor. Existe um nível de capital que deixa as pessoas consumirem o máximo possível para sempre: a Regra de Ouro.</div>
+          <p>Se mais poupança dá mais renda, por que não poupar 100%? Porque aí ninguém consome nada! As pessoas não se importam com quantas máquinas o país tem, e sim com <b>o que conseguem consumir</b>. A <b>Regra de Ouro</b> (conceito de Edmund Phelps) é o estado estacionário que <b>maximiza o consumo por trabalhador</b>.</p>
+          <h4>Por que existe um ponto ótimo?</h4>
+          <p>Ter mais capital tem dois lados:</p>
+          <ul>
+            <li><b>Bom:</b> mais capital, mais produção;</li>
+            <li><b>Ruim:</b> mais capital, mais capital que se desgasta e precisa ser reposto, o que consome parte da produção.</li>
+          </ul>
+          <p>Com <b>pouco capital</b>, uma máquina a mais rende muito e vale a pena acumular. Com <b>muito capital</b>, uma máquina a mais rende pouco (produto marginal decrescente), mas ainda precisa ser mantida, e o consumo cai. A Regra de Ouro é o ponto de equilíbrio: <b>o ganho de uma unidade extra de capital é igual ao custo de mantê-la</b>.</p>
+          <figure class="fig" data-fig="gold"><figcaption>A área verde é o que sobra para consumir depois de repor o capital. Ela é maior no ponto da Regra de Ouro.</figcaption></figure>
+          <div class="prova"><span>Como cai na prova</span>
+            <ul>
+              <li>A Regra de Ouro maximiza o <b>consumo</b>, <b>não</b> a produção nem o capital.</li>
+              <li>A economia <b>não chega sozinha</b> à Regra de Ouro: ela vai para o estado estacionário da sua taxa de poupança. Só uma taxa de poupança específica leva à Regra de Ouro.</li>
+              <li>Se uma unidade extra de capital rende mais do que custa para manter, a economia tem <b>capital de menos</b>. Se rende menos, tem <b>capital demais</b>.</li>
+            </ul>
+          </div>
+
+          <h4 id="r-8-trans">A transição para a Regra de Ouro: o dilema entre gerações</h4>
+          <div class="two-col">
+            <div class="callout">
+              <p class="callout-t">Capital demais → poupar menos</p>
+              <p>O consumo <b>sobe na hora</b> (menos renda vai para investimento) e fica <b>acima do nível inicial durante todo o caminho</b>, embora produção e investimento caiam aos poucos. <b>Todos ganham</b>, então não há dilema.</p>
+            </div>
+            <div class="callout">
+              <p class="callout-t">Capital de menos → poupar mais</p>
+              <p>O consumo <b>cai na hora</b>. Com o tempo, o capital se acumula e o consumo cresce até <b>superar</b> o inicial. A geração <b>atual paga a conta</b> e as <b>futuras colhem</b>.</p>
+            </div>
+          </div>
+          <figure class="fig" data-fig="trans"><figcaption>O que acontece com produção, consumo e investimento quando a poupança muda. Alterne entre os dois casos.</figcaption></figure>
+          <p>No caso mais comum (capital de menos, inclusive nos EUA), buscar a Regra de Ouro exige sacrificar o consumo de hoje. A decisão depende de <b>quanto peso a sociedade dá às gerações futuras</b>. Quem pensa mais no presente pode preferir não buscar. Quem dá <b>peso igual a todas as gerações</b> (como na regra bíblica “faça aos outros o que gostaria que fizessem a você”, de onde vem o nome) escolhe buscar a Regra de Ouro.</p>
+
+          <h3 id="r-8-3">8-3 · Crescimento populacional</h3>
+          <div class="idea"><span>Em uma frase</span>Com mais gente chegando, o capital precisa ser “dividido” entre mais trabalhadores. O país produz mais no total, mas cada pessoa fica com menos.</div>
+          <h4>Diluição do capital e investimento de equilíbrio</h4>
+          <p>Quando a força de trabalho cresce, o mesmo estoque de capital é repartido entre mais pessoas, e o capital por trabalhador cai. É um efeito parecido com a depreciação: o capital não se desgasta, mas se <b>dilui</b>.</p>
+          <p>Por isso, para manter o capital por trabalhador constante, o investimento precisa cobrir duas coisas: <b>repor o que se desgastou</b> e <b>equipar os trabalhadores novos</b>. Esse é o <b>investimento de equilíbrio</b>.</p>
+          <div class="exemplo"><span>Exemplo</span>Uma república de estudantes tem 3 notebooks para 3 moradores. Chegam mais 3 moradores. Se ninguém compra notebooks novos, agora há meio notebook por pessoa. Para manter “um notebook por pessoa”, é preciso comprar notebooks para os recém-chegados, além de trocar os que quebrarem.</div>
+          <h4>Os três efeitos do crescimento populacional</h4>
+          <ol>
+            <li><b>Explica o crescimento da produção total:</b> no estado estacionário, a produção por trabalhador é constante, mas, como há cada vez mais trabalhadores, a <b>produção total cresce</b> no mesmo ritmo da população. O padrão de vida, porém, não melhora.</li>
+            <li><b>Explica por que alguns países são mais pobres:</b> mais crescimento populacional significa mais diluição, logo <b>menos capital e menos renda por trabalhador</b> no estado estacionário. É um <b>efeito de nível</b> (como a poupança, só que no sentido contrário).</li>
+            <li><b>Muda a Regra de Ouro:</b> com população crescendo, o capital ótimo leva em conta também o custo de equipar os trabalhadores novos.</li>
+          </ol>
+          <figure class="fig" data-fig="pop"><figcaption>Com mais crescimento populacional, a reta do investimento de equilíbrio fica mais inclinada e o estado estacionário tem menos capital por trabalhador.</figcaption></figure>
+          <div class="prova"><span>Como cai na prova</span>Um aumento do crescimento populacional <b>acelera o crescimento do PIB total</b>, mas <b>reduz o nível do PIB por trabalhador</b>. Não confunda o agregado com o “por pessoa”.</div>
+          <details class="case"><summary><span>Estudo de caso</span> Crescimento populacional ao redor do mundo</summary>
+            <p>Países com crescimento populacional alto tendem a ter renda per capita baixa, como Solow prevê. Por isso organismos como o Banco Mundial defendem educação sobre controle de natalidade e mais oportunidades para as mulheres (a China chegou a adotar a política do filho único). Mas, de novo, <b>correlação não é causalidade</b>: talvez seja a renda alta que reduz a natalidade, por exemplo pelo acesso a métodos contraceptivos.</p>
+          </details>
+
+          <h3 id="r-8-4">Outras visões sobre a população: Malthus e Kremer</h3>
+          <div class="two-col">
+            <div class="callout">
+              <p class="callout-t">Malthus, o pessimista</p>
+              <p><b>Thomas Malthus</b> (séc. XVIII-XIX) previu que a população cresceria até esgotar a capacidade de produzir alimentos, e a humanidade viveria para sempre na miséria. Para ele, até ajudar os pobres seria contraproducente. <b>Errou</b>: a população mundial cresceu cerca de 6 vezes e o padrão de vida subiu muito. Ele não previu o <b>progresso tecnológico</b> (fertilizantes, máquinas agrícolas) nem os <b>métodos de controle da natalidade</b>.</p>
+            </div>
+            <div class="callout">
+              <p class="callout-t">Kremer, o otimista</p>
+              <p><b>Michael Kremer</b> vê o contrário: mais gente significa mais cientistas e inventores, logo <b>mais progresso tecnológico</b>. Evidência: depois da era glacial, regiões que ficaram isoladas se desenvolveram de acordo com seu tamanho. A Eurásia-África, a maior, ficou mais avançada. A pequena ilha Flinders regrediu e sua sociedade desapareceu.</p>
+            </div>
+          </div>
+
+          <h3 id="r-8-res">Resumo do Capítulo 8</h3>
+          <div class="summary">
+            <p><b>1.</b> No longo prazo, a <b>poupança</b> determina quanto capital a economia tem e, portanto, seu nível de produção. Mais poupança, mais capital e mais renda.</p>
+            <p><b>2.</b> A poupança tem <b>efeito de nível</b>: gera um período de crescimento rápido que vai perdendo força. Sozinha, <b>não sustenta crescimento para sempre</b>.</p>
+            <p><b>3.</b> A <b>Regra de Ouro</b> maximiza o consumo. Com capital demais, poupar menos melhora a vida de todos. Com capital de menos, chegar lá exige sacrifício da geração atual.</p>
+            <p><b>4.</b> Mais <b>crescimento populacional</b> significa menos capital e menos renda por trabalhador (efeito de nível). Malthus: a população esgota os recursos. Kremer: a população gera ideias.</p>
+            <p class="muted">O que falta: o modelo ainda não explica por que o padrão de vida continua subindo década após década. Para isso, é preciso o progresso tecnológico (Cap. 9).</p>
+          </div>
+
+          <hr class="sep">
+
+          <div class="chapter-label" data-cap="9">Capítulo 9</div>
+          <h2 class="chapter-title">Crescimento Econômico II: Tecnologia, Prática e Políticas</h2>
+          <p>O capítulo tem quatro objetivos: (1) colocar o <b>progresso tecnológico</b> no modelo; (2) ver se o modelo bate com os <b>dados</b>; (3) discutir <b>políticas</b> que promovem crescimento; (4) ir <b>além de Solow</b>, tentando explicar de onde vem a tecnologia.</p>
+
+          <h3 id="r-9-1">9-1 · Progresso tecnológico no modelo de Solow</h3>
+          <div class="idea"><span>Em uma frase</span>A tecnologia faz cada trabalhador valer por mais de um. É a única força que, em Solow, explica um padrão de vida que sobe para sempre.</div>
+          <h4>Eficiência da mão de obra</h4>
+          <p>O modelo passa a considerar a <b>eficiência da mão de obra</b>: o conhecimento da sociedade sobre como produzir. Ela aumenta com novas tecnologias (a linha de montagem no início do séc. XX, a informática no fim do século) e também com melhorias de <b>saúde, educação e qualificação</b>.</p>
+          <p>A ideia de <b>trabalhadores efetivos</b>: se a eficiência dobra, um trabalhador hoje produz como dois de antigamente. Por isso o progresso é chamado de <b>“ampliador da mão de obra”</b>: funciona como se a força de trabalho aumentasse.</p>
+          <div class="exemplo"><span>Exemplo</span>Um contador com papel e calculadora fecha poucos balanços por mês. Com uma planilha eletrônica, o mesmo contador faz o trabalho de vários. O número de contadores não mudou, mas os “contadores efetivos” se multiplicaram.</div>
+          <h4>O que cresce, e em que ritmo, no estado estacionário</h4>
+          <div class="table-wrap">
+            <table class="t concept">
+              <thead><tr><th>Variável</th><th>O que acontece no longo prazo</th></tr></thead>
+              <tbody>
+                <tr><td>Capital e produção <b>por trabalhador efetivo</b></td><td>Ficam <b>constantes</b></td></tr>
+                <tr><td>Produção <b>por trabalhador</b> (o padrão de vida)</td><td>Cresce no <b>ritmo do progresso tecnológico</b></td></tr>
+                <tr><td>Produção <b>total</b> do país</td><td>Cresce no ritmo da <b>população + tecnologia</b></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="callout accent">
+            <p class="callout-t">Mensagem central do modelo de Solow</p>
+            <p><b>Só o progresso tecnológico</b> explica o crescimento sustentado do padrão de vida. Poupança alta dá crescimento só até o estado estacionário; depois, quem manda no ritmo é a tecnologia.</p>
+          </div>
+          <p>A <b>Regra de Ouro</b> também se ajusta: o capital ótimo agora leva em conta que a economia toda cresce (por causa da população e da tecnologia). Na Regra de Ouro, o retorno líquido de uma unidade extra de capital é igual à <b>taxa de crescimento da economia</b>.</p>
+
+          <h3 id="r-9-2">9-2 · Da teoria à prática</h3>
+          <h4 id="r-9-eq">Crescimento equilibrado</h4>
+          <p>Com o progresso tecnológico, muitas variáveis <b>crescem juntas</b>. É o <b>crescimento equilibrado</b>, e os dados dos EUA confirmam:</p>
+          <ul>
+            <li>A produção por trabalhador e o capital por trabalhador cresceram <b>no mesmo ritmo</b> (cerca de 2% ao ano), então a relação capital/produção ficou estável;</li>
+            <li>O <b>salário real cresce</b> no ritmo da tecnologia, enquanto o <b>retorno do capital fica estável</b>.</li>
+          </ul>
+          <p>Contraste histórico: <b>Karl Marx</b> previu que o retorno do capital cairia e levaria a crises. Os dados não confirmaram, o que é parte da razão de estudarmos Solow, e não Marx.</p>
+
+          <h4 id="r-9-conv">Convergência</h4>
+          <p><b>Convergência</b> é a ideia de que países pobres crescem mais rápido e acabam alcançando os ricos. Solow diz: <b>depende do motivo pelo qual eles são diferentes</b>.</p>
+          <ul>
+            <li>Se os dois países têm o <b>mesmo estado estacionário</b> (mesma poupança, população e tecnologia) e só começaram com quantidades diferentes de capital, o mais pobre <b>cresce mais rápido e alcança</b> o rico. É o caso dos estados americanos, que eram muito desiguais no fim do séc. XIX e foram se aproximando.</li>
+            <li>Se têm <b>estados estacionários diferentes</b> (um poupa menos, por exemplo), <b>cada um vai para o seu</b>, e o pobre não alcança o rico.</li>
+          </ul>
+          <div class="two-col">
+            <div class="callout"><p class="callout-t">Convergência absoluta</p><p>Todos os países iriam para o <b>mesmo nível</b> de renda, com os pobres crescendo mais rápido, quaisquer que fossem suas características. Só aconteceria se todos tivessem o mesmo estado estacionário. <b>Não é o que se vê</b> no mundo. <span class="tag-atv">caiu na atividade</span></p></div>
+            <div class="callout"><p class="callout-t">Convergência condicional</p><p>Cada país converge para o <b>seu próprio</b> estado estacionário, definido por poupança, crescimento populacional e educação. Levando essas diferenças em conta, os dados mostram convergência de cerca de <b>2% ao ano</b>.</p></div>
+          </div>
+          <figure class="fig" data-fig="converge"><figcaption>Com o mesmo estado estacionário, o pobre alcança o rico. Com estados estacionários diferentes, cada um segue no seu nível.</figcaption></figure>
+          <div class="prova"><span>Como cai na prova</span>“Países pobres sempre crescem mais rápido que os ricos” é <b>falso</b>. O que acelera o crescimento é estar <b>longe do próprio estado estacionário</b>, não ser pobre. Diferenças em poupança, população e instituições impedem a convergência absoluta.</div>
+
+          <h4 id="r-9-fat">Acumulação de fatores × eficiência</h4>
+          <p>Um país pode ser pobre por dois motivos: <b>tem pouco</b> (pouco capital físico e humano) ou <b>usa mal o que tem</b> (baixa eficiência). Os estudos mostram que <b>as duas coisas importam</b> e costumam andar juntas: países com muito capital também o usam bem.</p>
+          <p>Por que andam juntas? Talvez uma economia eficiente incentive a acumulação (vale mais a pena estudar), ou a acumulação gere eficiência (ideias que se espalham). Ou ainda uma <b>terceira causa</b> afeta as duas: a <b>qualidade das instituições</b>. Governos ruins costumam errar em tudo ao mesmo tempo: inflação alta, déficits, interferência no mercado, corrupção.</p>
+
+          <details class="case" id="r-9-com"><summary><span>Estudo de caso</span> O livre-comércio é bom para o crescimento?</summary>
+            <p>Desde Adam Smith (“o alfaiate não faz os próprios sapatos”) e Ricardo (vantagem comparativa), a teoria diz que sim. Há três tipos de evidência. (1) <b>Warner e Sachs:</b> economias abertas cresceram muito mais que as fechadas entre 1970 e 1989, mas correlação não é causalidade. (2) Países que <b>se abriram</b> cresceram mais depois: Japão nos anos 1850, Coreia do Sul nos 1960, Vietnã nos 1990 (só que essas aberturas vieram junto com outras reformas). (3) <b>Frankel e Romer</b> usaram a <b>geografia</b> (distância de outros países, acesso ao mar) para isolar o efeito do comércio e concluíram que ele <b>aumenta a renda</b>. Conclusão: a abertura ao comércio favorece o crescimento.</p>
+          </details>
+
+          <h3 id="r-9-3">9-3 · Políticas para promover o crescimento</h3>
+          <h4>O país poupa demais ou de menos?</h4>
+          <p>Para saber, compara-se o <b>retorno do capital</b> (descontado o desgaste) com o <b>ritmo de crescimento da economia</b>. Se o capital rende mais do que a economia cresce, há <b>capital de menos</b>: vale poupar mais.</p>
+          <p>Nos EUA, o capital rende cerca de 8% ao ano, contra um crescimento de cerca de 3%. Ou seja, o país está <b>bem abaixo da Regra de Ouro</b> e deveria poupar mais. O mesmo vale para outras economias: na prática, a preocupação dos economistas é com <b>poupança insuficiente</b>, não excessiva.</p>
+          <h4>Como o governo pode aumentar a poupança</h4>
+          <ul>
+            <li><b>Poupança pública:</b> o caminho mais direto. Um <b>déficit</b> é poupança pública negativa: eleva os juros e tira espaço do investimento privado, um ônus para as gerações futuras. Um <b>superávit</b> faz o contrário.</li>
+            <li><b>Poupança privada:</b> impostos altos sobre o rendimento do capital desestimulam a poupança. Contas de aposentadoria com isenção fiscal (as IRAs, nos EUA) e a troca do imposto de renda por um imposto sobre o consumo estimulariam. Mas não há consenso: as pessoas poderiam apenas transferir para essas contas o que já poupavam.</li>
+          </ul>
+          <h4 id="r-9-inv">Em que investir?</h4>
+          <ul>
+            <li>Há vários tipos de capital: privado (máquinas), público (estradas, pontes, saneamento) e <b>capital humano</b> (educação e qualificação), que é <b>pelo menos tão importante</b> quanto o físico.</li>
+            <li><b>“Campo de jogo nivelado”:</b> muitos economistas defendem tratar todos os tipos de capital da mesma forma nos impostos e deixar o mercado decidir onde investir.</li>
+            <li><b>Política setorial:</b> outros defendem que o governo incentive setores específicos, porque alguns investimentos geram <b>externalidades tecnológicas</b>: ideias que “transbordam” para o resto da economia (o aprendizado na prática, ou <i>learning by doing</i>). Nesses casos, o benefício para a sociedade supera o lucro de quem investiu.</li>
+            <li>A maioria é <b>cética</b> com a política setorial: (1) medir essas externalidades é quase impossível; (2) o processo político pode premiar quem tem lobby, e não quem gera mais benefício.</li>
+            <li><b>Capital público:</b> é difícil medir quanto uma estrada ou ponte rende, e há o risco das “pontes que levam a lugar nenhum”, feitas por interesse político.</li>
+          </ul>
+          <details class="case"><summary><span>Estudo de caso</span> Política setorial na prática</summary>
+            <p><b>Acertos e erros.</b> A <b>Arpanet</b>, criada pelo Departamento de Defesa dos EUA, deu origem à Internet: um sucesso. Já o <b>MITI</b>, do Japão, tentou impedir a <b>Honda</b> de fabricar carros. O fundador comentou: “se não fosse pelo MITI, eu teria tido ainda mais sucesso”. A <b>Solyndra</b>, fabricante de painéis solares, faliu depois de receber garantia de empréstimo do governo americano, com suspeita de motivação política. Lá atrás, as tarifas de Alexander Hamilton (1789) ajudaram a indústria do norte dos EUA, mas prejudicaram os agricultores do sul.</p>
+          </details>
+          <h4 id="r-9-inst">Instituições corretas</h4>
+          <ul>
+            <li><b>Tradição jurídica:</b> o direito de estilo inglês (EUA, Austrália, Índia) protege mais investidores e credores do que o de estilo francês (Itália, Espanha, América Latina). Isso desenvolve o mercado de capitais e facilita o financiamento de empresas novas.</li>
+            <li><b>Qualidade do governo:</b> a <b>“mão que ajuda”</b> protege a propriedade, faz cumprir contratos e promove a concorrência. A <b>“mão arrebatadora”</b> usa o Estado para enriquecer uma minoria. A <b>corrupção</b> reduz o crescimento.</li>
+            <li>Adam Smith já dizia que basta <b>“paz, impostos leves e uma justiça razoável”</b>.</li>
+          </ul>
+          <details class="case"><summary><span>Estudo de caso</span> As origens coloniais das instituições</summary>
+            <p>Países perto da linha do equador costumam ser mais pobres. Parte disso vem do clima (doenças, agricultura difícil), mas <b>Acemoglu, Johnson e Robinson</b> propõem uma explicação indireta. Doenças tropicais afastaram os colonizadores europeus. Onde muitos europeus se fixaram (EUA, Canadá, Nova Zelândia), criaram instituições que protegiam a propriedade. Nos trópicos, criaram instituições <b>extrativistas</b>, feitas para tirar riqueza. Essas instituições <b>persistiram</b> depois da independência e ainda hoje prejudicam o investimento e o crescimento.</p>
+          </details>
+          <h4 id="r-9-tec">Estimular o progresso tecnológico</h4>
+          <p>Ninguém sabe exatamente o que determina o progresso tecnológico, mas há políticas para incentivá-lo: <b>patentes</b> (monopólio temporário para quem inventa), <b>incentivos fiscais à pesquisa</b> e <b>financiamento público de pesquisa básica</b> nas universidades. Há também uma dimensão internacional: quando países não respeitam a propriedade intelectual, “pegam carona” na pesquisa alheia e reduzem o incentivo a inovar no mundo todo.</p>
+          <details class="case" id="r-9-desac"><summary><span>Estudo de caso</span> A desaceleração do crescimento no mundo</summary>
+            <p>A partir de 1972, o crescimento caiu nas grandes economias, porque o ritmo de melhoria da tecnologia diminuiu. <b>Ninguém sabe ao certo por quê</b>. Há quatro hipóteses: <b>(1) problemas de medição</b>: é difícil medir melhorias de qualidade e serviços, mas isso não explica tudo; <b>(2) choque do petróleo</b>: o momento coincide, mas a produtividade não se recuperou quando o petróleo barateou em 1986; <b>(3) qualidade do trabalhador</b>: a entrada em massa de jovens (baby boomers) e de mulheres reduziu a experiência média, e a educação avançou mais devagar; <b>(4) esgotamento de ideias</b>: os anos 1950-60 é que teriam sido a exceção, aproveitando ideias acumuladas durante a Depressão e a Guerra. Nos anos 1990, a <b>tecnologia da informação</b> e a Internet aceleraram o crescimento, mas a crise de 2008 interrompeu esse ganho.</p>
+          </details>
+
+          <h3 id="r-9-4">9-4 · Além de Solow: crescimento endógeno</h3>
+          <div class="idea"><span>Em uma frase</span>Solow toma a tecnologia como dada, “caída do céu”. A teoria do crescimento endógeno tenta explicar de onde ela vem.</div>
+          <p>A piada do livro: um químico, um físico e um economista estão presos numa ilha com uma lata de comida. O economista diz: “primeiro, suponha que temos um abridor de latas…”. Solow faz algo parecido: <b>supõe</b> o progresso tecnológico. Os modelos de <b>crescimento endógeno</b> tentam explicá-lo.</p>
+          <h4>O modelo mais simples: capital sem retornos decrescentes</h4>
+          <p>Imagine que uma unidade extra de capital rende <b>sempre a mesma coisa</b>, sem retornos decrescentes. Aí a <b>poupança gera crescimento para sempre</b>, ao contrário de Solow. Faz sentido? Se “capital” for só máquinas, não (dez computadores não deixam ninguém dez vezes mais produtivo). Mas se incluir o <b>conhecimento</b>, sim: conhecimento não parece se esgotar, e pode até gerar mais conhecimento.</p>
+          <figure class="fig" data-fig="ak"><figcaption>Mais poupança: em Solow, o ganho de crescimento é temporário; no modelo endógeno, o crescimento fica maior para sempre.</figcaption></figure>
+          <h4>Modelo com dois setores</h4>
+          <p>A economia tem <b>empresas</b>, que produzem bens, e <b>universidades</b>, que produzem conhecimento usado por todos. A <b>poupança</b> continua afetando só o <b>nível</b> da renda. Já a <b>fração de pessoas trabalhando em pesquisa</b> determina o <b>ritmo de crescimento</b>, porque é ela que alimenta o fluxo de novas ideias.</p>
+          <h4>A pesquisa nas empresas</h4>
+          <p>Quem faz pesquisa são em geral empresas em busca de lucro, motivadas pelo <b>monopólio temporário</b> que a inovação dá (patente, ou ser a primeira a chegar). As empresas fazem pesquisa demais ou de menos para o bem da sociedade? Há efeitos nos dois sentidos:</p>
+          <ul>
+            <li><b>“Subir nos ombros de gigantes”</b> (frase de Newton): cada inovação serve de base para as próximas, um benefício que a empresa não cobra. Isso puxa para <b>pesquisa de menos</b>.</li>
+            <li><b>“Pisar nos pés”</b>: várias empresas correm atrás da mesma descoberta, duplicando esforços. Isso puxa para <b>pesquisa demais</b>.</li>
+          </ul>
+          <p>Os estudos indicam que o primeiro efeito domina: o <b>retorno social da pesquisa é altíssimo</b> (mais de 40% ao ano, contra cerca de 8% do capital físico). Para alguns economistas, isso justifica subsídios públicos à pesquisa.</p>
+          <h4>Destruição criativa</h4>
+          <p><b>Schumpeter</b> (1942): o progresso vem de <b>empreendedores</b> que, em busca de lucro, lançam produtos ou métodos melhores. Os consumidores ganham, mas as empresas antigas perdem e podem até fechar. Depois, o inovador vira o “velho” e é derrubado pelo próximo. O processo gera <b>vencedores e perdedores</b>:</p>
+          <ul>
+            <li>Os <b>luditas</b>, tecelões ingleses do séc. XIX, quebravam as máquinas que ameaçavam seus empregos;</li>
+            <li>A <b>Wal-Mart</b> barateou o varejo, mas tirou mercado das lojas de bairro;</li>
+            <li>Quem perde costuma pedir proteção ao governo. Na Europa, regras mais rígidas de entrada no mercado resultaram em <b>produtividade menor</b> no varejo.</li>
+          </ul>
+          <p><b>Aghion e Howitt</b> transformaram essa ideia em modelos de crescimento.</p>
+
+          <h3 id="r-9-ap">Apêndice · De onde veio o crescimento? (contabilidade do crescimento)</h3>
+          <p>A <b>contabilidade do crescimento</b> divide o crescimento de um país em três fontes: <b>mais capital</b>, <b>mais trabalho</b> e <b>melhor tecnologia</b>. A tecnologia não dá para observar diretamente, então ela é medida como <b>o que sobra</b>: o crescimento que capital e trabalho não explicam. Essa sobra é chamada de <b>produtividade total dos fatores</b> ou <b>resíduo de Solow</b>.</p>
+          <ul>
+            <li>O resíduo capta tecnologia, mas também qualquer outra coisa que mude a eficiência. Educação melhor o aumenta. Uma regra que obrigue a comprar equipamentos antipoluição o <b>reduz</b> (mais capital sem mais produção medida).</li>
+            <li><b>EUA, 1948-2010:</b> capital, trabalho e tecnologia contribuíram <b>quase igualmente</b> para o crescimento. A contribuição da tecnologia despencou entre 1972 e 1995.</li>
+          </ul>
+          <details class="case"><summary><span>Estudo de caso</span> Os Tigres Asiáticos</summary>
+            <p>Hong Kong, Cingapura, Coreia do Sul e Taiwan cresceram mais de 7% ao ano por décadas. Muitos achavam que o segredo era copiar tecnologia estrangeira. <b>Alwyn Young</b> mostrou que não: o crescimento veio de <b>muito mais insumos</b>, ou seja, mais gente trabalhando, muito mais investimento e muito mais escolaridade. A melhora tecnológica foi parecida com a dos EUA. Ou seja, a teoria básica explica o caso.</p>
+          </details>
+          <details class="case"><summary><span>Tópico</span> O resíduo de Solow no curto prazo</summary>
+            <p><b>Edward Prescott</b> notou que o resíduo sobe e desce junto com a economia e concluiu que as recessões seriam causadas por <b>choques tecnológicos</b>. Essa é a base da teoria do <b>ciclo real de negócios</b>. Os críticos respondem que, na recessão, as empresas mantêm funcionários ociosos (<b>reserva de mão de obra</b>) e fazem tarefas que não aparecem nas estatísticas. Isso faz a produtividade <i>medida</i> cair sem que a tecnologia tenha piorado.</p>
+          </details>
+
+          <h3 id="r-9-res">Resumo do Capítulo 9</h3>
+          <div class="summary">
+            <p><b>1.</b> No longo prazo, o padrão de vida cresce <b>só por causa do progresso tecnológico</b>.</p>
+            <p><b>2.</b> O modelo de Solow explica bem os dados: <b>crescimento equilibrado</b> e <b>convergência condicional</b>. As diferenças de renda entre países vêm tanto de quanto capital eles têm quanto de quão bem o usam.</p>
+            <p><b>3.</b> Os EUA (e outros países) têm <b>capital de menos</b> em relação à Regra de Ouro e deveriam poupar mais.</p>
+            <p><b>4.</b> Políticas para crescer: aumentar a poupança (pública e privada), investir bem (inclusive em educação), ter <b>boas instituições</b> e incentivar a <b>pesquisa</b>.</p>
+            <p><b>5.</b> O crescimento desacelerou nos anos 1970 (causa incerta) e acelerou nos anos 1990 (tecnologia da informação).</p>
+            <p><b>6.</b> Os modelos de <b>crescimento endógeno</b> explicam o progresso tecnológico a partir das decisões de pesquisa e inovação.</p>
+          </div>
+          <p class="end-cta"><a class="btn" href="#video">Assistir ao vídeo de revisão →</a> <a class="btn ghost" href="#quiz">Testar com o quiz →</a></p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================== DIAGRAMAS ============================== -->
+    <section id="diagramas" data-sec="diagramas" class="page" hidden>
+      <div class="page-head">
+        <h1>Diagramas interativos</h1>
+        <p class="lead">Na prova não há conta, mas há gráfico. Mexa nos parâmetros e observe <b>para onde as curvas se movem</b> e o que acontece com k*, y* e o consumo.</p>
+      </div>
+
+      <div class="lab card">
+        <div class="lab-head">
+          <h2>Laboratório do modelo de Solow</h2>
+          <div class="lab-actions">
+            <button class="btn ghost sm" id="labRef">Fixar como referência</button>
+            <button class="btn ghost sm" id="labReset">Restaurar</button>
+          </div>
+        </div>
+        <div class="lab-body">
+          <div class="lab-controls">
+            <label class="slider"><span>Poupança <b>s</b><output id="o-s"></output></span><input type="range" id="p-s" min="0.05" max="0.6" step="0.01"></label>
+            <label class="slider"><span>Depreciação <b>δ</b><output id="o-d"></output></span><input type="range" id="p-d" min="0.02" max="0.12" step="0.005"></label>
+            <label class="slider"><span>Crescimento populacional <b>n</b><output id="o-n"></output></span><input type="range" id="p-n" min="0" max="0.04" step="0.0025"></label>
+            <label class="slider"><span>Progresso tecnológico <b>g</b><output id="o-g"></output></span><input type="range" id="p-g" min="0" max="0.04" step="0.0025"></label>
+            <div class="checks">
+              <label><input type="checkbox" id="c-f" checked> f(k): produção</label>
+              <label><input type="checkbox" id="c-c" checked> consumo em k*</label>
+              <label><input type="checkbox" id="c-gold" checked> Regra de Ouro</label>
+            </div>
+            <div class="presets">
+              <span class="muted small">Cenários:</span>
+              <button class="chip" data-preset="s-up">↑ poupança</button>
+              <button class="chip" data-preset="n-up">↑ população</button>
+              <button class="chip" data-preset="d-up">↑ depreciação</button>
+              <button class="chip" data-preset="g-up">↑ tecnologia</button>
+              <button class="chip" data-preset="gold">Regra de Ouro</button>
+            </div>
+          </div>
+          <div class="lab-chart">
+            <div id="labChart" class="chart"></div>
+            <div class="legend" id="labLegend"></div>
+          </div>
+        </div>
+        <div class="lab-read" id="labRead"></div>
+        <div class="lab-traj">
+          <h3>Trajetória da referência até a configuração atual</h3>
+          <p class="muted small">A economia parte do estado estacionário da referência. No período 10, os parâmetros mudam para os atuais. Repare no que é imediato e no que é gradual.</p>
+          <div class="seg" id="trajSeg">
+            <button class="seg-b on" data-v="level">Nível por trabalhador efetivo (y, c, i)</button>
+            <button class="seg-b" data-v="log">Renda por trabalhador, Y/L (escala log)</button>
+          </div>
+          <div id="trajChart" class="chart"></div>
+        </div>
+      </div>
+
+      <div class="grid two">
+        <div class="card">
+          <h2>Transição para a Regra de Ouro</h2>
+          <p class="muted small">Figs. 8-9 e 8-10. A taxa de poupança muda em t₀ para o nível da Regra de Ouro.</p>
+          <figure class="fig bare" data-fig="trans"></figure>
+        </div>
+        <div class="card">
+          <h2>Convergência</h2>
+          <p class="muted small">Duas economias: uma começa pobre e outra rica.</p>
+          <figure class="fig bare" data-fig="converge"></figure>
+        </div>
+        <div class="card">
+          <h2>Solow × crescimento endógeno (AK)</h2>
+          <p class="muted small">O que acontece com a renda (escala log) quando a poupança aumenta em t₀.</p>
+          <figure class="fig bare" data-fig="ak"></figure>
+        </div>
+        <div class="card">
+          <h2>Mapa do modelo</h2>
+          <p class="muted small">Como cada versão estende a anterior.</p>
+          <div class="flow">
+            <div class="flow-step"><b>Solow básico</b><span>Δk = sf(k) – δk</span><em>k*, poupança → efeito de nível</em></div>
+            <div class="flow-arrow">↓ + população (n)</div>
+            <div class="flow-step"><b>Com crescimento populacional</b><span>Δk = sf(k) – (δ+n)k</span><em>Y cresce a n; y constante; n↑ → y*↓</em></div>
+            <div class="flow-arrow">↓ + tecnologia (g)</div>
+            <div class="flow-step"><b>Com progresso tecnológico</b><span>Δk = sf(k) – (δ+n+g)k</span><em>Y/L cresce a g; Y a n+g; RO: PMgK–δ = n+g</em></div>
+            <div class="flow-arrow">↓ explicar g</div>
+            <div class="flow-step"><b>Crescimento endógeno</b><span>Y = AK · dois setores · P&amp;D · destruição criativa</span><em>poupança / u → crescimento persistente</em></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== QUIZ ============================== -->
+    <section id="quiz" data-sec="quiz" class="page" hidden>
+      <div class="page-head">
+        <h1>Quiz</h1>
+        <p class="lead">Questões conceituais no estilo da prova. As alternativas mudam de ordem a cada tentativa.</p>
+      </div>
+
+      <div id="quizSetup" class="card setup">
+        <div class="setup-grid">
+          <label>Capítulo
+            <select id="qCap">
+              <option value="all">Todos</option>
+              <option value="8">Capítulo 8</option>
+              <option value="9">Capítulo 9</option>
+              <option value="A">Apêndice (contabilidade)</option>
+            </select>
+          </label>
+          <label>Tópico
+            <select id="qTopic"><option value="all">Todos</option></select>
+          </label>
+          <label>Quantidade
+            <select id="qN">
+              <option value="10">10</option>
+              <option value="20" selected>20</option>
+              <option value="30">30</option>
+              <option value="0">Todas</option>
+            </select>
+          </label>
+          <label>Modo
+            <select id="qMode">
+              <option value="train">Treino: corrige na hora</option>
+              <option value="exam">Simulado: corrige no fim</option>
+            </select>
+          </label>
+          <label>Origem
+            <select id="qSrc">
+              <option value="all">Todas as questões</option>
+              <option value="atv">Temas da atividade do professor</option>
+              <option value="new">Só as que nunca vi</option>
+            </select>
+          </label>
+          <label>Cronômetro
+            <select id="qTimer">
+              <option value="0">Sem cronômetro</option>
+              <option value="up">Cronometrar (sem limite)</option>
+              <option value="60">1 min por questão (limite)</option>
+              <option value="90">1,5 min por questão (limite)</option>
+            </select>
+          </label>
+        </div>
+        <div class="setup-foot">
+          <label class="inline"><input type="checkbox" id="qWrong"> Só questões que errei antes <span class="muted small" id="qWrongCount"></span></label>
+          <span class="muted small" id="qAvail"></span>
+          <button class="btn" id="qStart">Começar</button>
+        </div>
+      </div>
+
+      <div id="quizRun" class="quiz-run" hidden>
+        <div class="quiz-top">
+          <span class="muted small" id="qProg"></span>
+          <div class="bar"><div class="bar-fill" id="qBar"></div></div>
+          <span class="timer" id="qClock" hidden></span>
+          <button class="btn ghost sm" id="qFinish" hidden>Finalizar</button>
+          <button class="btn ghost sm" id="qQuit">Sair</button>
+        </div>
+        <div class="card qcard">
+          <div class="qmeta" id="qMeta"></div>
+          <h2 class="qtext" id="qText"></h2>
+          <div class="opts" id="qOpts"></div>
+          <div class="qexp" id="qExp" role="status" aria-live="polite" hidden></div>
+          <div class="qnav">
+            <button class="btn ghost" id="qPrev">← Anterior</button>
+            <span class="muted small kbd-hint">1–4 escolhem · Enter avança · ← → navegam</span>
+            <button class="btn" id="qNext" disabled>Próxima</button>
+          </div>
+        </div>
+        <div class="qgrid" id="qGrid" aria-label="Mapa das questões"></div>
+      </div>
+
+      <div id="quizEnd" class="quiz-end" hidden></div>
+    </section>
+
+    <!-- ============================== FLASHCARDS ============================== -->
+    <section id="flashcards" data-sec="flashcards" class="page" hidden>
+      <div class="page-head">
+        <h1>Flashcards</h1>
+        <p class="lead">Leia o conceito, tente lembrar e vire o cartão. Marque se já sabe ou se precisa revisar.</p>
+      </div>
+      <div class="fc-controls">
+        <div class="seg" id="fcCap">
+          <button class="seg-b on" data-v="all">Todos</button>
+          <button class="seg-b" data-v="8">Cap. 8</button>
+          <button class="seg-b" data-v="9">Cap. 9</button>
+          <button class="seg-b" data-v="A">Apêndice</button>
+        </div>
+        <div class="seg" id="fcMode">
+          <button class="seg-b on" data-v="due">Para hoje</button>
+          <button class="seg-b" data-v="all">Todos</button>
+        </div>
+        <button class="btn ghost sm" id="fcShuffle">Embaralhar</button>
+        <button class="btn ghost sm" id="fcResetK">Zerar marcações</button>
+      </div>
+      <div class="fc-stage">
+        <div class="fc" id="fc" tabindex="0" role="button" aria-label="Virar cartão">
+          <div class="fc-inner">
+            <div class="fc-face fc-front"><span class="fc-tag" id="fcTagF"></span><p id="fcFront"></p><span class="fc-hint">clique ou espaço para virar</span></div>
+            <div class="fc-face fc-back"><span class="fc-tag" id="fcTagB"></span><p id="fcBack"></p></div>
+          </div>
+        </div>
+        <div class="fc-nav">
+          <button class="btn ghost" id="fcPrev" aria-label="Anterior">←</button>
+          <button class="btn bad-soft" id="fcNo">Errei / revisar</button>
+          <span class="muted small" id="fcPos"></span>
+          <button class="btn ok-soft" id="fcYes">Já sei</button>
+          <button class="btn ghost" id="fcNext" aria-label="Próximo">→</button>
+        </div>
+        <p class="muted small center kbd-hint">Teclas: espaço vira · ← → navegam · 1 = revisar · 2 = já sei</p>
+        <p class="muted small center srs-note">Repetição espaçada: “Já sei” afasta o cartão (1, 3, 7, 14, 30 dias); “Errei” traz de volta ainda nesta sessão.</p>
+        <div class="bar thin"><div class="bar-fill ok" id="fcBar"></div></div>
+        <p class="muted small center" id="fcStat"></p>
+      </div>
+    </section>
+
+    <!-- ============================== JOGOS ============================== -->
+    <section id="jogos" data-sec="jogos" class="page" hidden>
+      <div class="page-head">
+        <h1>Jogos</h1>
+        <p class="lead">Treinos rápidos para fixar o que mais cai.</p>
+      </div>
+      <div class="seg big" id="gameSeg">
+        <button class="seg-b on" data-v="tf">Verdadeiro ou falso</button>
+        <button class="seg-b" data-v="shock">Choques: nível × crescimento</button>
+        <button class="seg-b" data-v="match">Quem disse o quê?</button>
+      </div>
+
+      <div class="game" id="game-tf"></div>
+      <div class="game" id="game-shock" hidden></div>
+      <div class="game" id="game-match" hidden></div>
+    </section>
+    <!-- ============================== VÍDEO ============================== -->
+    <section id="video" data-sec="video" class="page" hidden>
+      <div class="page-head">
+        <h1>Vídeo de revisão</h1>
+        <p class="lead">Caps. 8 e 9. São 14 cenas com narração e legenda.</p>
+      </div>
+      <div class="vplayer" id="vplayer">
+        <div class="v-stage" id="vStage" aria-live="off"></div>
+        <div class="v-controls">
+          <button class="v-btn" id="vPrev" aria-label="Cena anterior"><svg viewBox="0 0 24 24"><path d="M6 5v14M18 5l-9 7 9 7z"/></svg></button>
+          <button class="v-btn v-main" id="vPlay" aria-label="Reproduzir"><svg class="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l12-7.5z"/></svg><svg class="i-pause" viewBox="0 0 24 24"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg></button>
+          <button class="v-btn" id="vNext" aria-label="Próxima cena"><svg viewBox="0 0 24 24"><path d="M18 5v14M6 5l9 7-9 7z"/></svg></button>
+          <button class="v-btn" id="vSkip" aria-label="Pular fala" title="Pular fala"><svg viewBox="0 0 24 24"><path d="M5 6l7 6-7 6zM13 6l7 6-7 6z"/></svg></button>
+          <div class="v-prog" id="vProg" role="slider" aria-label="Progresso do vídeo" tabindex="0"><div class="v-prog-fill" id="vProgFill"></div><div class="v-marks" id="vMarks"></div></div>
+          <span class="v-time" id="vTime">0:00</span>
+          <label class="v-opt"><input type="checkbox" id="vTTS" checked> Som</label>
+          <select id="vRate" aria-label="Velocidade"><option value="1">1×</option><option value="1.25">1,25×</option><option value="1.5">1,5×</option><option value="0.85">0,85×</option></select>
+          <button class="v-btn" id="vFull" aria-label="Tela cheia"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+        </div>
+      </div>
+      <p class="muted small v-hint">Espaço: play/pause · ← →: cena anterior/próxima · N: pular fala. Clique em play para começar com som.</p>
+      <div class="v-chapters" id="vChapters"></div>
+      <p class="v-download"><a class="btn ghost" href="video/revisao-crescimento.mp4" download>Baixar o vídeo (MP4, com narração e legenda)</a></p>
+    </section>
+
+    <!-- ============================== ATIVIDADE ============================== -->
+    <section id="atividade" data-sec="atividade" class="page" hidden>
+      <div class="page-head">
+        <h1>Atividade do professor</h1>
+        <p class="lead">“O Modelo de Crescimento de Solow (Análise Conceitual)”, UERN / DECON. São 5 questões discursivas, sem cálculo. A prova de múltipla escolha pode reaproveitar estes temas. Tente responder de cabeça antes de abrir a resposta-modelo.</p>
+        <div class="atv-actions">
+          <button class="btn" data-atv-quiz="all">Quiz só com os temas da atividade</button>
+        </div>
+      </div>
+      <div id="atvList" class="atv-list"></div>
+    </section>
+
+    <!-- ============================== COLA ============================== -->
+    <section id="cola" data-sec="cola" class="page" hidden>
+      <div class="page-head no-print">
+        <h1>Cola para imprimir</h1>
+        <p class="lead">Uma página com o essencial dos Caps. 8 e 9. Use “Imprimir” e escolha “Salvar como PDF” para guardar.</p>
+        <button class="btn" id="printBtn">Imprimir / salvar PDF</button>
+      </div>
+      <div id="colaSheet" class="cola"></div>
+    </section>
+  </main>
+
+  <div class="search-overlay" id="searchOv" hidden>
+    <div class="search-box" role="dialog" aria-modal="true" aria-label="Buscar no conteúdo">
+      <div class="search-input-wrap">
+        <svg viewBox="0 0 24 24" width="18" height="18"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M16 16l4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <input type="search" id="searchIn" placeholder="Buscar na revisão, questões e flashcards…" autocomplete="off" aria-label="Termo de busca">
+        <kbd>Esc</kbd>
+      </div>
+      <div class="search-res" id="searchRes" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <a href="#quiz" class="back-pill" id="backPill" hidden>← Voltar ao quiz</a>
+
+  <nav class="bottomnav" aria-label="Navegação principal">
+    <a href="#revisao" data-tab="revisao"><svg viewBox="0 0 24 24"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5zM13 4h5.5A1.5 1.5 0 0 1 20 5.5v13a1.5 1.5 0 0 1-1.5 1.5H13z"/></svg><span>Revisão</span></a>
+    <a href="#diagramas" data-tab="diagramas"><svg viewBox="0 0 24 24"><path d="M4 4v16h16M7 16c3-7 6-9 12-10"/></svg><span>Gráficos</span></a>
+    <a href="#quiz" data-tab="quiz"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .8-1 1.5M12 16.5v.01"/></svg><span>Quiz</span></a>
+    <a href="#flashcards" data-tab="flashcards"><svg viewBox="0 0 24 24"><rect x="3.5" y="6" width="13" height="13" rx="2"/><path d="M7.5 3.5h11a2 2 0 0 1 2 2v11"/></svg><span>Cards</span></a>
+    <button id="moreBtn" aria-expanded="false" aria-controls="moreSheet"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="19" cy="12" r="1.3"/></svg><span>Mais</span></button>
+  </nav>
+  <div class="more-sheet" id="moreSheet" hidden>
+    <a href="#inicio" data-tab="inicio">Início</a>
+    <a href="#video" data-tab="video">Vídeo de revisão</a>
+    <a href="#jogos" data-tab="jogos">Jogos</a>
+    <a href="#atividade" data-tab="atividade">Atividade do professor</a>
+    <a href="#cola" data-tab="cola">Cola para imprimir</a>
+    <button class="more-search" id="moreSearch">Buscar</button>
+  </div>
+
+  <footer class="foot">
+    <p>Material de estudo baseado em N. Gregory Mankiw, <i>Macroeconomia</i>, 8ª ed., Capítulos 8 e 9. Feito para revisão pessoal.</p>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="video/audio/manifest.js"></script>
+  <script src="js/video.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

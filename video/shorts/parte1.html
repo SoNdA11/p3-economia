@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Economia em 1 minuto · Parte 1</title>
+<style>html,body{margin:0;background:#000;height:100%}#stage{width:1080px;height:1920px}</style>
+</head>
+<body>
+<div id="stage"></div>
+<script src="../../js/video.js"></script>
+<script src="parte1-audio.js"></script>
+<script src="parte1.js"></script>
+<script>
+  /* página usada para renderizar o vídeo quadro a quadro */
+  window.renderAt = (t) => { document.getElementById("stage").innerHTML = Short1.renderAt(t); };
+  renderAt(0.6);
+</script>
+</body>
+</html>
